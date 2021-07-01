@@ -28,4 +28,11 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile('org.projectlombok:lombok')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+        //Spring Boot용 Spring Data JPA 추상화 라이브러리
+        //스프링 부트 버전에 맞춰 자동으로 JPA 관련 라이브러리들의 버전을 관리
+    compile('com.h2database:h2')
+        //In-Memory 관계형 데이터베이스
+        //별도의 설치없이 프로젝트 의존성만으로 관리
+        //테스트용, JPA 테스트 로컬환경 구동용
 }
