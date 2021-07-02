@@ -1,5 +1,6 @@
 package com.songmingyu.admin.domain.posts;
 
+import com.songmingyu.admin.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @Getter //Getter 자동생성
 @NoArgsConstructor //기본 생성자 자동추가
 @Entity /*테이블과 링크될 클래스를 나타냄, 기본값으로 클래스의 카멜케이스 이름을 언더스코어 네이밍으로 테이블 이름을 매칭*/
-public class Posts {
+public class Posts extends BaseTimeEntity {
     @Id //해당 테이블의 Primary Key
     @GeneratedValue(strategy = GenerationType.IDENTITY) //PK의 생성 규칙을 나타낸다. GenerationType.IDENTITY 옵션 추가해야 AK 붙음
     private Long id;
@@ -28,6 +29,11 @@ public class Posts {
         this.title = title;
         this.content = content;
         this.author = author;
+    }
+
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 }
 /*
