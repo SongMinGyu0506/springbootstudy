@@ -36,4 +36,5 @@ dependencies {
         //별도의 설치없이 프로젝트 의존성만으로 관리
         //테스트용, JPA 테스트 로컬환경 구동용
     compile('org.springframework.boot:spring-boot-starter-mustache')
+    compile('org.springframework.boot:spring-boot-starter-oauth2-client')//소셜 기능 구현
 }
