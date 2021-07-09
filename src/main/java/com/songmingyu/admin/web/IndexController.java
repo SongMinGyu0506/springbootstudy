@@ -1,5 +1,6 @@
 package com.songmingyu.admin.web;
 
+import com.songmingyu.admin.config.auth.LoginUser;
 import com.songmingyu.admin.config.auth.dto.SessionUser;
 import com.songmingyu.admin.domain.posts.PostsService;
 import com.songmingyu.admin.web.dto.PostsResponseDto;
@@ -21,9 +22,10 @@ public class IndexController {
     @GetMapping("/")
     //Model --> Server Template Engine에서 사용할 수 있는 객체를 저장할 수 있음
     //여기서는 postsService.findAllDesc()로 가져온 결과를 posts로 index.mustache에 전달.
-    public String index(Model model) {
+    public String index(Model model, @LoginUser SessionUser user) {
         model.addAttribute("posts",postsService.findAllDesc());
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        //SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        //기존 SessionUser 가져오는 값 개선 이제 어느 컨트롤러든지 @LoginUser만 사용하면 세션 정보를 가져올 수 있음
         if(user != null) {
             model.addAttribute("userName",user.getName());
         }

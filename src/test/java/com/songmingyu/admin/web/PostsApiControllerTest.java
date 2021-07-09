@@ -49,7 +49,7 @@ public class PostsApiControllerTest {
 
     private MockMvc mvc;
 
-    @Before
+    @Before //테스트 시작전 작업
     public void setup() {
         mvc = MockMvcBuilders
                 .webAppContextSetup(context)
@@ -64,6 +64,8 @@ public class PostsApiControllerTest {
 
     @Test
     @WithMockUser(roles="USER")
+    //인증된 가짜 사용자를 만들어서 사용, roles에 권한을 추가
+    //즉 이 어노테이션으로 인해 ROLE_USER 권한을 가진 사용자가 API를 요청하는 것과 동일한 효과를 가지게 된다.
     public void Posts_등록된다() throws Exception {
         //given
         String title = "title";
@@ -77,6 +79,8 @@ public class PostsApiControllerTest {
         String url = "http://localhost:" + port + "/api/v1/posts";
 
         //when
+        // 생성된 MockMvc를 통해 API를 테스트
+        // 본문 영역은 문자열로 표현하기 위해 ObjectMapper를 통해 문자열 JSON으로 변환
         mvc.perform(post(url)
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content(new ObjectMapper().writeValueAsString(requestDto)))
