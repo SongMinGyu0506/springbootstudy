@@ -41,4 +41,6 @@ dependencies {
 
     //데이터베이스를 세션 저장소로 사용하는 방식
     compile('org.springframework.session:spring-session-jdbc')
+
+    compile("org.mariadb.jdbc:mariadb-java-client")
 }
