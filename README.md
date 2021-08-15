@@ -7,4 +7,4 @@ springbootStudy
 
 todo
 
-ADD Nginx
+ADD Nginxd
